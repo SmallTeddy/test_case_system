@@ -34,7 +34,7 @@ import DataEcharts from "@/components/data/DataEcharts.vue"
 
 @Component({ components: { DataEcharts }})
 export default class Home extends Vue {
-  eventLineChart: any = {
+  eventLineChart = {
     echartId: 'echart1',
     option: {
       xAxis: {
@@ -50,16 +50,16 @@ export default class Home extends Vue {
       ]
     }
   }
-  dataListFirst: any = [
+  dataListFirst = [
     { id: '1', icon: 'el-icon-s-home', title: '首页', data: '13', bgcolor: 'item-img-first'},
     { id: '2', icon: 'el-icon-s-promotion', title: '数据传输量', data: '56', bgcolor: 'item-img-second'},
     { id: '3', icon: 'el-icon-picture', title: '图片名称', data: '273', bgcolor: 'item-img-third'},
     { id: '4', icon: 'el-icon-s-comment', title: '消息名称', data: '975', bgcolor: 'item-img-fourth'},
     { id: '5', icon: 'el-icon-s-marketing', title: '图表名称', data: '21', bgcolor: 'item-img-fiveth'}
   ]
-  dataListSecond: any = [
+  dataListSecond = [
     { id: '1', icon: 'el-icon-folder-opened', title: '文件数量', data: '45', bgcolor: 'item-img-first'},
-    { id: '2', icon: 'el-icon-folder-delete', title: '失效文件数量', data: '26', bgcolor: 'item-img-second'},
+    { id: '2', icon: 'el-icon-folder-delete', title: '失效文件量', data: '26', bgcolor: 'item-img-second'},
     { id: '5', icon: 'el-icon-s-order', title: '评论数量', data: '33', bgcolor: 'item-img-third'},
     { id: '3', icon: 'el-icon-warning-outline', title: '警告数量', data: '12', bgcolor: 'item-img-fourth'},
     { id: '4', icon: 'el-icon-question', title: '问题数量', data: '1', bgcolor: 'item-img-fiveth'}
@@ -76,7 +76,7 @@ export default class Home extends Vue {
   width: 100%;
   height: 500px;
 }
-.card-box-first, 
+.card-box-first,
 .card-box-second {
   display: flex;
   height: 120px;

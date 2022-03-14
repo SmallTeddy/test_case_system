@@ -33,12 +33,12 @@ import { Vue, Component } from 'vue-property-decorator';
 
 @Component({ })
 export default class Login extends Vue {
-  loginForm: any = {
+  loginForm = {
     mobile: "13312345678",
     code: ""
   };
   agreement = false;
-  loginRules: any = {
+  loginRules = {
     mobile: [{ required: true, message: "请输入手机号", trigger: "blur" }],
     code: [{ required: true, message: "请输入验证码", trigger: "blur" }]
   };

@@ -45,13 +45,13 @@ export default class Editor extends Vue {
     syntax: true, //语法检测
   };
   // 失去焦点
-  onEditorBlur(editor: any): void {}
+  onEditorBlur(editor: unknown): void {}
   // 获得焦点
-  onEditorFocus(editor: any): void {}
+  onEditorFocus(editor: unknown): void {}
   // 开始
-  onEditorReady(editor: any): void {}
+  onEditorReady(editor: unknown): void {}
   // 修改值
-  onEditorChange(editor: any): void {
+  onEditorChange(editor: Record<string, string>): void {
     this.content = editor.html;
   }
 }
@@ -64,7 +64,7 @@ export default class Editor extends Vue {
 }
 .editor {
   line-height: normal !important;
-  height: 800px;
+  height: 750px;
 }
 ::v-deep .ql-snow .ql-tooltip .ql-flip {
   left: -5px !important;

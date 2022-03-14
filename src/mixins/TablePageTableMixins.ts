@@ -3,7 +3,7 @@ import { Vue, Component, Prop } from 'vue-property-decorator';
 @Component({})
 export class TablePageTableMixins extends Vue {
   loading = false;
-  tableData: any = [];
+  tableData = [];
   currenPage = 1;
   pageSize = 1;
   pageTotal = 0;

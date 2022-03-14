@@ -54,7 +54,7 @@ import { Vue, Component } from 'vue-property-decorator';
 
 @Component({ })
 export default class Form extends Vue {
-  form: any = {
+  form = {
     name: '',
     region: '',
     date1: '',

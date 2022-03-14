@@ -1,10 +1,10 @@
 import Vue from 'vue';
-import VueRouter, { RouteConfig } from 'vue-router';
+import VueRouter, { RouteConfig, RawLocation, Route }from 'vue-router';
 
-const originalPush: any = VueRouter.prototype.push;
-VueRouter.prototype.push = function push(location: any) {
-  return originalPush.call(this, location).catch((err: any) => err);
-};
+const originalPush = VueRouter.prototype.push as unknown as Promise<Route>;
+VueRouter.prototype.push = function push (location: RawLocation) {
+  return (originalPush as any).call(this, location).catch((err: Error) => err);
+}
 
 Vue.use(VueRouter);
 
@@ -32,6 +32,10 @@ const routes: Array<RouteConfig> = [
       {
         path: '/editor',
         component: () => import('@/views/editor/Editor.vue')
+      },
+      {
+        path: '/code',
+        component: () => import('@/views/codePage/CodePage.vue')
       },
       {
         path: '/setting',

@@ -4,25 +4,9 @@
       <el-menu router :collapse-transition="false" :default-active="$route.path"
         background-color="#fff" text-color="#666" active-text-color="#409EFF"
         style=" border-right: none; font-weight: 700">
-        <el-menu-item index="/">
-          <i class="el-icon-s-home"></i>
-          <span slot="title">首页</span>
-        </el-menu-item>
-        <el-menu-item index="/evaluate">
-          <i class="el-icon-document"></i>
-          <span slot="title">评价管理</span>
-        </el-menu-item>
-        <el-menu-item index="/form">
-          <i class="el-icon-s-claim"></i>
-          <span slot="title">表单测试</span>
-        </el-menu-item>
-        <el-menu-item index="/editor">
-          <i class="el-icon-edit"></i>
-          <span slot="title">富文本框</span>
-        </el-menu-item>
-        <el-menu-item index="/setting">
-          <i class="el-icon-setting"></i>
-          <span slot="title">个人设置</span>
+        <el-menu-item v-for="menu in menuItems" :key="menu.index" :index="menu.index">
+          <i :class="menu.icon"></i>
+          <span slot="title">{{ menu.title }}</span>
         </el-menu-item>
       </el-menu>
     </el-aside>
@@ -55,6 +39,14 @@ import { Vue, Component } from "vue-property-decorator";
 export default class Layout extends Vue {
   userName = "测试用户";
   userPhoto = require('../../assets/images/user_photo.png');
+  menuItems = [
+    { index: '/', icon: 'el-icon-s-home', title: '首页' },
+    { index: '/evaluate', icon: 'el-icon-document', title: '评价管理' },
+    { index: '/form', icon: 'el-icon-s-claim', title: '表单测试' },
+    { index: '/editor', icon: 'el-icon-edit', title: '富文本框' },
+    { index: '/code', icon: 'el-icon-coin', title: '代码界面' },
+    { index: '/setting', icon: 'el-icon-setting', title: '个人设置' }
+  ]
   logout() {
     this.$router.push("/login");
   }
@@ -62,7 +54,7 @@ export default class Layout extends Vue {
     this.$router.push("/setting");
   }
 
-  dropdownClick(command: any): void {
+  dropdownClick(command: string): void {
     switch(command) {
       case 'setting': this.setting(); break;
       case 'logout': this.logout(); break;

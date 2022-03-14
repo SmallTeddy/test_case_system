@@ -4,3 +4,4 @@ declare module '*.vue' {
 }
 
 declare module 'vue-quill-editor';
+declare module 'vue-codemirror';

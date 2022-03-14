@@ -7,11 +7,12 @@
 <script lang="ts">
 import { Vue, Component, Prop } from "vue-property-decorator";
 import * as echarts from "echarts";
+import { EchartClass } from '@/utils/class/EchartsClass';
 
 @Component({})
 export default class Home extends Vue {
-  @Prop({ default: () => {} }) echart!: any;
-  myEchart: any = null;
+  @Prop({ default: () => new EchartClass() }) echart!: EchartClass;
+  myEchart: unknown = null;
 
   dispose(): void {
     let chart = document.getElementById(this.echart.echartId);

@@ -27,7 +27,7 @@ import { Vue, Component, Prop, Emit } from 'vue-property-decorator';
 export default class PageTable extends Vue {
   inheritAttrs: boolean = false;
   /* 表格 */
-  @Prop({ type: Array, default: () => [] }) data: any;
+  @Prop({ type: Array, default: () => [] }) data!: Record<string, unknown>[];
   @Prop({ type: String, default: 'medium' }) size!: string;
   @Prop({ type: [String, Number] }) height!: string | number;
   @Prop({ type: Boolean, default: true }) fit!: boolean;

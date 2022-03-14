@@ -33,7 +33,7 @@ import { Vue, Component } from 'vue-property-decorator';
 @Component({ })
 export default class Setting extends Vue {
   isChange = false;
-  user: any = {
+  user = {
     name: 'adhsjkdh',
     phone: '13312345678',
     address: '苏州市',
