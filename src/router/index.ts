@@ -38,6 +38,10 @@ const routes: Array<RouteConfig> = [
         component: () => import('@/views/codePage/CodePage.vue')
       },
       {
+        path: '/graph',
+        component: () => import('@/views/graph/Graph.vue')
+      },
+      {
         path: '/setting',
         component: () => import('@/views/setting/Setting.vue')
       }
