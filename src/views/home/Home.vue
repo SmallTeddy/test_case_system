@@ -1,26 +1,10 @@
 <template>
   <div class="home">
     <div class="card-box-first">
-      <el-card v-for="v in dataListFirst" :key="v.id">
-        <div class="card-item">
-          <i :class="[v.icon, v.bgcolor]" class="item-img"></i>
-          <div class="card-text">
-            <h4>{{ v.title }}</h4>
-            <p>{{ v.data }}</p>
-          </div>
-        </div>
-      </el-card>
+      <CardItem :list="dataListFirst" />
     </div>
     <div class="card-box-second">
-      <el-card v-for="v in dataListSecond" :key="v.id">
-        <div class="card-item">
-          <i :class="[v.icon, v.bgcolor]" class="item-img"></i>
-          <div class="card-text">
-            <h4>{{ v.title }}</h4>
-            <p>{{ v.data }}</p>
-          </div>
-        </div>
-      </el-card>
+      <CardItem :list="dataListSecond" />
     </div>
     <div>
       <data-echarts :echart="eventLineChart" class="eventLineChart"></data-echarts>
@@ -31,8 +15,9 @@
 <script lang="ts">
 import { Vue, Component } from "vue-property-decorator";
 import DataEcharts from "@/components/data/DataEcharts.vue"
+import CardItem from "./CardItem.vue"
 
-@Component({ components: { DataEcharts }})
+@Component({ components: { DataEcharts, CardItem }})
 export default class Home extends Vue {
   eventLineChart = {
     echartId: 'echart1',
@@ -72,65 +57,21 @@ export default class Home extends Vue {
   width: 100%;
   height: 100%;
 }
-.eventLineChart {
-  width: 100%;
-  height: 500px;
-}
+
 .card-box-first,
 .card-box-second {
   display: flex;
   height: 120px;
   width: 100%;
-
-  .el-card {
-    flex: 1;
-    margin: 0 10px;
-  }
-
-  .card-item {
-    height: 80px;
-    display: flex;
-
-    .item-img {
-      width: 80px;
-      height: 80px;
-      font-size: 40px;
-      text-align: center;
-      line-height: 80px;
-      color: #fff;
-    }
-    .item-img-first {
-      background: #f89490fd;
-    }
-    .item-img-second {
-      background: #84c9c8;
-    }
-    .item-img-third {
-      background: #f3dd8d;
-    }
-    .item-img-fourth {
-      background: #90d6f0;
-    }
-    .item-img-fiveth {
-      background: #e775f19a;
-    }
-
-    .card-text {
-      font-size: 20px;
-      height: 80px;
-      width: 140px;
-
-      h4, p {
-        text-align: center;
-        margin: 10px 0 0 0;
-      }
-    }
-  }
 }
 
 .card-box-second {
   margin-top: 20px;
 }
 
+.eventLineChart {
+  width: 100%;
+  height: 500px;
+}
 </style>
 
