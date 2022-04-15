@@ -42,6 +42,10 @@ const routes: Array<RouteConfig> = [
         component: () => import('@/views/graph/Graph.vue')
       },
       {
+        path: '/diff',
+        component: () => import('@/views/diff/Diff.vue')
+      },
+      {
         path: '/setting',
         component: () => import('@/views/setting/Setting.vue')
       }

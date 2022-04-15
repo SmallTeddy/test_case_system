@@ -12,7 +12,7 @@ import RelationGraph from 'relation-graph';
 
 @Component({ components: { RelationGraph }})
 export default class Graph extends Vue {
-  $refs!: { seeksRelationGraph: RelationGraph };
+  $refs!: { seeksRelationGraph: typeof RelationGraph };
   name = 'Demo';
   graphOptions = {
     allowSwitchLineShape: true,

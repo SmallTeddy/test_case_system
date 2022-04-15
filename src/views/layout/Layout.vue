@@ -12,7 +12,7 @@
     </el-aside>
     <el-container>
       <el-header class="header">
-        <span class="text">Welcome Student Evaluation System</span>
+        <span class="text">Welcome Test Case System</span>
         <el-dropdown class="dropdown" @command="dropdownClick">
           <span class="el-dropdown-link">
             <img :src="userPhoto" class="user-avatar" />
@@ -40,13 +40,14 @@ export default class Layout extends Vue {
   userName = "测试用户";
   userPhoto = require('../../assets/images/user_photo.png');
   menuItems = [
-    { index: '/', icon: 'el-icon-s-home', title: '首页' },
-    { index: '/evaluate', icon: 'el-icon-document', title: '评价管理' },
-    { index: '/form', icon: 'el-icon-s-claim', title: '表单测试' },
-    { index: '/editor', icon: 'el-icon-edit', title: '富文本框' },
-    { index: '/code', icon: 'el-icon-coin', title: '代码界面' },
-    { index: '/graph', icon: 'el-icon-s-data', title: '关系图' },
-    { index: '/setting', icon: 'el-icon-setting', title: '个人设置' }
+    { index: '/',         icon: 'el-icon-s-home',              title: '首页'    },
+    { index: '/evaluate', icon: 'el-icon-document',            title: '评价管理' },
+    { index: '/form',     icon: 'el-icon-s-claim',             title: '表单测试' },
+    { index: '/editor',   icon: 'el-icon-edit',                title: '富文本框' },
+    { index: '/code',     icon: 'el-icon-coin',                title: '代码界面' },
+    { index: '/graph',    icon: 'el-icon-s-data',              title: '关系图'   },
+    { index: '/diff',     icon: 'el-icon-c-scale-to-original', title: 'diff案例' },
+    { index: '/setting',  icon: 'el-icon-setting',             title: '个人设置'  }
   ]
   logout() {
     this.$router.push("/login");
