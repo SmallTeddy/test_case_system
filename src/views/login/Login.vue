@@ -2,7 +2,7 @@
   <div class="login">
     <el-card class="card">
       <div class="title">
-        Student Evaluation System
+        Test Case System
       </div>
       <el-form :model="loginForm" status-icon :rules="loginRules" ref="loginForm">
         <el-form-item class="el-form-item" prop="mobile">
