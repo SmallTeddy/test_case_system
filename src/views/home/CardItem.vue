@@ -24,10 +24,17 @@ export default class CardItem extends Vue {
 <style lang="less" scoped>
 .card-row {
   display: flex;
+  justify-content: space-between;
 }
 .el-card {
   flex: 1;
   margin: 0 10px;
+}
+.el-card:first-child {
+  margin-left: 0;
+}
+.el-card:last-child {
+  margin-right: 0;
 }
 .card-item {
   height: 80px;

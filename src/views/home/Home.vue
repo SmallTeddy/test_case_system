@@ -6,35 +6,21 @@
     <div class="card-box-second">
       <CardItem :list="dataListSecond" />
     </div>
-    <div>
-      <data-echarts :echart="eventLineChart" class="eventLineChart"></data-echarts>
+    <div class="charts-box">
+      <el-card class="home-cross-chart"><HomeCrossChart /></el-card>
+      <el-card class="home-shadow-chart"><HomeShadowChart /></el-card>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import { Vue, Component } from "vue-property-decorator";
-import DataEcharts from "@/components/data/DataEcharts.vue"
+import HomeCrossChart from './HomeCrossChart.vue';
+import HomeShadowChart from './HomeShadowChart.vue'
 import CardItem from "./CardItem.vue"
 
-@Component({ components: { DataEcharts, CardItem }})
+@Component({ components: { CardItem, HomeCrossChart, HomeShadowChart }})
 export default class Home extends Vue {
-  eventLineChart = {
-    echartId: 'echart1',
-    option: {
-      xAxis: {
-        data: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K'],
-      },
-      yAxis: {},
-      series: [
-        {
-          data: [10, 22, 28, 23, 19, 10, 18, 24, 14, 17, 23],
-          type: 'line',
-          lineStyle: { color: 'skyblue', width: 2 },
-        },
-      ]
-    }
-  }
   dataListFirst = [
     { id: '1', icon: 'el-icon-s-home', title: '首页', data: '13', bgcolor: 'item-img-first'},
     { id: '2', icon: 'el-icon-s-promotion', title: '数据传输量', data: '56', bgcolor: 'item-img-second'},
@@ -60,18 +46,25 @@ export default class Home extends Vue {
 
 .card-box-first,
 .card-box-second {
-  display: flex;
   height: 120px;
   width: 100%;
 }
 
 .card-box-second {
-  margin-top: 20px;
+  margin: 20px 0;
 }
 
-.eventLineChart {
-  width: 100%;
-  height: 500px;
+.charts-box {
+  display: flex;
+}
+
+.home-cross-chart,
+.home-shadow-chart {
+  flex: 1;
+}
+
+.home-cross-chart {
+  margin-right: 20px;
 }
 </style>
 
