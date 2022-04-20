@@ -1,0 +1,148 @@
+@import "./variables.less";
+@import "./reset.less";
+
+html {
+  box-sizing: border-box;
+  height: 100%;
+}
+body {
+  height: 100%;
+  font-size: 12px;
+  color: #303030;
+  font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+  -webkit-font-smoothing: antialiased; // 字体抗锯齿，使字体更加平滑
+  -moz-osx-font-smoothing: grayscale; // 字体抗锯齿，兼容火狐
+  text-rendering: optimizeLegibility; // 绘制文本时，浏览器侧重文本的可读性
+}
+#app {
+  width: 100%;
+  height: 100%;
+}
+
+/* 清除浮动 */
+.clearfix {
+  zoom: 1; // 针对IE6&IE7
+  &:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+  }
+}
+.fl {
+  float: left;
+}
+.fr {
+  float: right;
+}
+.searchbar {
+  background-color: #fff;
+  padding: 6px 10px;
+  margin-bottom: 10px;
+  .el-input--small,
+  .el-select--small {
+    width: 180px;
+    margin-right: 5px;
+  }
+  .el-button--small {
+    margin: 0 5px;
+  }
+}
+
+// element-ui 自定义对话框样式
+.dialog-box {
+  .el-dialog__header {
+    text-align: center;
+    padding-top: 15px;
+  }
+  .el-dialog__body {
+    padding: 20px 80px 0 30px;
+    .el-form-item__label {
+      font-weight: 500;
+    }
+    .el-select,.el-date-editor {
+      width: 100%;
+    }
+  }
+  .el-dialog__footer {
+    text-align: center;
+    padding-bottom: 15px;
+  }
+}
+// element-ui 侧边栏折叠状态弹出子菜单时样式
+.submenu-box.el-menu--vertical {
+  // top: 0 !important;
+  // height: 100%;
+  .el-menu.el-menu--popup {
+    box-sizing: border-box;
+    // height: 100%;
+    // padding: 60px 0;
+    border-left: 1px solid #dcdfe6; 
+    min-width: 0;
+    width: 150px;
+  }
+  .el-menu--popup.el-menu--popup-right-start {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+// element-ui 表格自定义样式
+.el-table {
+  .el-table__header {
+    th {
+      color: #606266;
+    }
+  }
+}
+// element-ui small尺寸 按钮自定义样式
+.el-button--small {
+  padding: 8px 12px;
+  &.el-button--primary {
+    background-color: @baseBlue;
+    border-color: @baseBlue;
+    &:focus,&:hover {
+      background-color: #59a7d4;
+      border-color: #59a7d4;
+    }
+  }
+  &.el-button--success {
+    background-color: @baseGreen;
+    border-color: @baseGreen; 
+    &:focus,&:hover {
+      background-color: #2ab46f;
+      border-color: #2ab46f;
+    }
+  }
+  &.el-button--danger {
+    background-color: @baseRed;
+    border-color: @baseRed;
+    &:focus,&:hover {
+      background-color: #ef5959;
+      border-color: #ef5959;
+    }
+  }
+  &.el-button--info {
+    background-color: #ececec;
+    border-color: #e4e7ed;
+    color: #6d6f74;
+    &:focus,&:hover {
+      background-color: #ecf5ff;
+      border-color: #c6e2ff;
+      color: #409eff;
+    }
+  }
+}
+// element-ui small尺寸 组件字体设置
+.el-button--small, .el-tag--small  {
+  font-size: 14px;
+}
+.el-input--small {
+  .el-input__inner, .el-textarea__inner {
+    font-size: 14px;
+  }
+}
+.el-input.is-disabled .el-input__inner {
+  color: #606266;
+}

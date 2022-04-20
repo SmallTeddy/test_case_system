@@ -19,7 +19,35 @@ import { Vue, Component } from "vue-property-decorator";
 
 @Component({})
 export default class Editor extends Vue {
-  content = "";
+  content = `<h1>使用 Rustup（推荐）</h1>
+您似乎正在运行 macOS、Linux 或其它类 Unix 系统。要下载 Rustup 并安装 Rust，请在终端中运行以下命令，然后遵循屏幕上的指示。如果您在 Windows 上，请参见 “其他安装方式”。
+<br /><br />
+<code>curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh</code>
+<br /><br />
+<h1>Rust 安装须知</h1>
+<br />
+<h2>入门</h2>
+如果您希望通过一份详细的步骤指南来开始学习 Rust ，请阅读马上开始页面。
+
+<br /><br />
+<h2>用 <code>rustup</code> 管理工具链</h2>
+<br /><br />
+Rust 由工具 rustup 安装和管理。Rust 有着以 6 星期为周期的 快速版本迭代机制，支持 大量平台，因而不同时期存在大量不同的 Rust 构建版本。 rustup 用于管理不同平台下的 Rust 构建版本并使其互相兼容， 支持安装由 Beta 和 Nightly 频道发布的版本，并支持其他用于交叉编译的编译版本。
+
+如果您曾经安装过 rustup，可以执行 rustup update 来升级 Rust。
+
+更多信息请查阅 rustup 文档。
+<br /><br />
+<h2>配置 <code>PATH</code> 环境变量</h2>
+<br /><br />
+在 Rust 开发环境中，所有工具都安装在 ~/.cargo/bin 目录中，您可以在这里找到包括 rustc、cargo 和 rustup 在内的 Rust 工具链。
+
+Rust 开发者通常会将该目录加入 PATH环境变量中。在安装过程中，rustup 会尝试配置 PATH。 由于不同平台、命令行 Shell 之间存在差异，rustup 中也可能存在 Bug，因此在终端重启或用户重新登录之前，rustup 对 PATH 的修改可能不会生效，甚至完全无效。
+
+如果安装后在终端尝试执行 rustc --version 失败，那么，以上内容就是最可能的原因。
+<br /><br />
+<h2>卸载 <code>Rust</code></h2>
+在任何时候如果您想卸载 Rust，您可以运行 rustup self uninstall。但我们会想念您的！`;
   editorOption = {
     modules: {
       toolbar: [

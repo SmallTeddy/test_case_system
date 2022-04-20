@@ -46,8 +46,16 @@ const routes: Array<RouteConfig> = [
         component: () => import('@/views/diff/Diff.vue')
       },
       {
+        path: '/drag',
+        component: () => import('@/views/dragPage/DragPage.vue')
+      },
+      {
         path: '/setting',
         component: () => import('@/views/setting/Setting.vue')
+      },
+      {
+        path: '/markdown',
+        component: () => import('@/views/markdown/MarkdownPage.vue')
       }
     ]
   },

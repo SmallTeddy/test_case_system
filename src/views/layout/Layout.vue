@@ -45,9 +45,11 @@ export default class Layout extends Vue {
     { index: '/form',     icon: 'el-icon-s-claim',             title: '表单测试' },
     { index: '/editor',   icon: 'el-icon-edit',                title: '富文本框' },
     { index: '/code',     icon: 'el-icon-coin',                title: '代码界面' },
-    { index: '/graph',    icon: 'el-icon-s-data',              title: '关系图表'   },
+    { index: '/graph',    icon: 'el-icon-s-data',              title: '关系图表' },
     { index: '/diff',     icon: 'el-icon-c-scale-to-original', title: 'diff案例' },
-    { index: '/setting',  icon: 'el-icon-setting',             title: '个人设置'  }
+    { index: '/drag',     icon: 'el-icon-money',               title: '拖拽案例' },
+    { index: '/setting',  icon: 'el-icon-setting',             title: '个人设置' },
+    { index: '/markdown', icon: 'el-icon-notebook-2',          title: 'MD文档'   }
   ]
   logout() {
     this.$router.push("/login");
