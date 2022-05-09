@@ -11,11 +11,11 @@ import 'quill/dist/quill.snow.css';
 import 'quill/dist/quill.bubble.css';
 import VueCodemirror from 'vue-codemirror';
 import 'codemirror/lib/codemirror.css';
-import "codemirror/theme/dracula.css"
-import { createPinia, PiniaVuePlugin } from 'pinia'
+import 'codemirror/theme/dracula.css';
+import { createPinia, PiniaVuePlugin } from 'pinia';
 
-Vue.use(PiniaVuePlugin)
-const pinia = createPinia()
+Vue.use(PiniaVuePlugin);
+const pinia = createPinia();
 
 Vue.config.productionTip = false;
 
@@ -27,5 +27,5 @@ new Vue({
   el: '#app',
   router,
   pinia,
-  render: h => h(App)
-}).$mount('#app')
+  render: (h) => h(App),
+}).$mount('#app');

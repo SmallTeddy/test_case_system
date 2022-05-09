@@ -3,27 +3,14 @@
     <el-table :data="data" :size="size" :height="height" :fit="fit" :highlight-current-row="highlightCurrentRow" :span-method="spanMethod">
       <slot></slot>
     </el-table>
-    <el-pagination
-      class="pagination-box"
-      :current-page="currenPage"
-      :page-size="pageSize"
-      :total="pageTotal"
-      :page-sizes="showSizes"
-      :pager-count="showPager"
-      :layout="layout"
-      :background="background"
-      @size-change="sizeChange"
-      @current-change="pageChange"
-      @prev-click="pageChange"
-      @next-click="pageChange"
-    ></el-pagination>
+    <el-pagination class="pagination-box" :current-page="currenPage" :page-size="pageSize" :total="pageTotal" :page-sizes="showSizes" :pager-count="showPager" :layout="layout" :background="background" @size-change="sizeChange" @current-change="pageChange" @prev-click="pageChange" @next-click="pageChange"></el-pagination>
   </div>
 </template>
 
 <script lang="ts">
 import { Vue, Component, Prop, Emit } from 'vue-property-decorator';
 
-@Component({ })
+@Component({})
 export default class PageTable extends Vue {
   inheritAttrs: boolean = false;
   /* 表格 */
@@ -41,8 +28,8 @@ export default class PageTable extends Vue {
   @Prop({ type: Number, default: 5 }) showPager!: number; // 页码按钮的个数  5=<pager<=21的奇数
   @Prop({ type: String, default: 'total, sizes, prev, pager, next, jumper' }) layout!: string;
   @Prop({ type: Boolean, default: true }) background!: boolean;
-  @Emit('page-change') pageChange(page: number) {};
-  @Emit('size-change') sizeChange(page: number) {};
+  @Emit('page-change') pageChange(page: number) {}
+  @Emit('size-change') sizeChange(page: number) {}
 }
 </script>
 

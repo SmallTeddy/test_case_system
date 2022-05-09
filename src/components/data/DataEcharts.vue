@@ -5,8 +5,8 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop } from "vue-property-decorator";
-import * as echarts from "echarts";
+import { Vue, Component, Prop } from 'vue-property-decorator';
+import * as echarts from 'echarts';
 import { EchartClass } from '@/utils/class/EchartsClass';
 
 @Component({})
@@ -47,4 +47,3 @@ export default class Home extends Vue {
   }
 }
 </style>
-

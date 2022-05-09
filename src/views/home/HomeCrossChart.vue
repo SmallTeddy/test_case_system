@@ -5,25 +5,25 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component } from "vue-property-decorator";
-import DataEcharts from "@/components/data/DataEcharts.vue";
+import { Vue, Component } from 'vue-property-decorator';
+import DataEcharts from '@/components/data/DataEcharts.vue';
 
 @Component({ components: { DataEcharts } })
 export default class HomeCrossChart extends Vue {
   homeCrossChart = {
-    echartId: "homeCrossChart",
+    echartId: 'homeCrossChart',
     option: {
       tooltip: {
-        trigger: "axis",
+        trigger: 'axis',
         axisPointer: {
-          type: "cross",
+          type: 'cross',
           label: {
-            backgroundColor: "#6a7985",
+            backgroundColor: '#6a7985',
           },
         },
       },
       legend: {
-        data: ["Email", "Union Ads", "Video Ads", "Direct", "Search Engine"],
+        data: ['Email', 'Union Ads', 'Video Ads', 'Direct', 'Search Engine'],
       },
       toolbox: {
         feature: {
@@ -31,75 +31,75 @@ export default class HomeCrossChart extends Vue {
         },
       },
       grid: {
-        left: "3%",
-        right: "4%",
-        bottom: "3%",
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
         containLabel: true,
       },
       xAxis: [
         {
-          type: "category",
+          type: 'category',
           boundaryGap: false,
-          data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+          data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
         },
       ],
       yAxis: [
         {
-          type: "value",
+          type: 'value',
         },
       ],
       series: [
         {
-          name: "Email",
-          type: "line",
-          stack: "Total",
+          name: 'Email',
+          type: 'line',
+          stack: 'Total',
           areaStyle: {},
           emphasis: {
-            focus: "series",
+            focus: 'series',
           },
           data: [120, 132, 101, 134, 90, 230, 210],
         },
         {
-          name: "Union Ads",
-          type: "line",
-          stack: "Total",
+          name: 'Union Ads',
+          type: 'line',
+          stack: 'Total',
           areaStyle: {},
           emphasis: {
-            focus: "series",
+            focus: 'series',
           },
           data: [220, 182, 191, 234, 290, 330, 310],
         },
         {
-          name: "Video Ads",
-          type: "line",
-          stack: "Total",
+          name: 'Video Ads',
+          type: 'line',
+          stack: 'Total',
           areaStyle: {},
           emphasis: {
-            focus: "series",
+            focus: 'series',
           },
           data: [150, 232, 201, 154, 190, 330, 410],
         },
         {
-          name: "Direct",
-          type: "line",
-          stack: "Total",
+          name: 'Direct',
+          type: 'line',
+          stack: 'Total',
           areaStyle: {},
           emphasis: {
-            focus: "series",
+            focus: 'series',
           },
           data: [320, 332, 301, 334, 390, 330, 320],
         },
         {
-          name: "Search Engine",
-          type: "line",
-          stack: "Total",
+          name: 'Search Engine',
+          type: 'line',
+          stack: 'Total',
           label: {
             show: true,
-            position: "top",
+            position: 'top',
           },
           areaStyle: {},
           emphasis: {
-            focus: "series",
+            focus: 'series',
           },
           data: [820, 932, 901, 934, 1290, 1330, 1320],
         },

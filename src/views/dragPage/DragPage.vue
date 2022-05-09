@@ -3,73 +3,73 @@
     <div class="template_in">
       <h1>流程模板</h1>
       <div class="templateInfo">
-          <el-form label-width="100px" :model="templateForm" ref="templateForm" :rules="templateRules">
-            <el-form-item label="模板名称:" prop="name">
-              <el-input v-model="templateForm.name" placeholder='请输入模板名称' />
-            </el-form-item>
-            <el-form-item label="模板说明:" prop="msg">
-              <el-input type="textarea" :autosize="{ minRows: 3, maxRows: 4}" v-model="templateForm.msg" placeholder='请输入模板说明' />
-            </el-form-item>
-          </el-form>
+        <el-form label-width="100px" :model="templateForm" ref="templateForm" :rules="templateRules">
+          <el-form-item label="模板名称:" prop="name">
+            <el-input v-model="templateForm.name" placeholder="请输入模板名称" />
+          </el-form-item>
+          <el-form-item label="模板说明:" prop="msg">
+            <el-input type="textarea" :autosize="{ minRows: 3, maxRows: 4 }" v-model="templateForm.msg" placeholder="请输入模板说明" />
+          </el-form-item>
+        </el-form>
       </div>
       <div class="step_box">
-          <div class='start-steps'>
-            <button class='start-btn'>开始</button>
+        <div class="start-steps">
+          <button class="start-btn">开始</button>
+        </div>
+        <draggable :list="list" disabled class="list-group" ghost-class="ghost" @start="dragging = true" @end="dragging = false" filter=".undraggable">
+          <div class="step" v-for="(v, i) in list" :key="v.id">
+            <textarea class="list-group-item" placeholder="请选择流程" maxlength="30" autofocus readonly="readonly" @focus="iptFocus(v, i)" @blur="iptBlur(v, i)" :value="v.step_name" />
+            <div class="stepsAdd stepsAdd-before" @click="addBefore(i)">+</div>
+            <div class="stepsAdd stepsAdd-after" @click="addAfter(i)">+</div>
+            <div class="sb-close" @click="deleteStep(i)">-</div>
           </div>
-          <draggable :list="list" disabled class="list-group" ghost-class="ghost" @start="dragging = true" @end="dragging = false" filter=".undraggable">
-            <div class="step" v-for="(v, i) in list" :key="v.id">
-              <textarea class="list-group-item" placeholder="请选择流程" maxlength='30' autofocus readonly="readonly" @focus='iptFocus(v, i)' @blur='iptBlur(v, i)' :value='v.step_name' />
-              <div class='stepsAdd stepsAdd-before' @click='addBefore(i)'>+</div>
-              <div class='stepsAdd stepsAdd-after' @click='addAfter(i)'>+</div>
-              <div class='sb-close' @click='deleteStep(i)'>-</div>
-            </div>
-            <div class='end-steps undraggable'>
-              <button class='end-btn'>结束</button>
-              <div class='stepsAdd stepsAdd-end' v-if='showEndSteps' @click='addBefore()'>+</div>
-            </div>
-          </draggable>
+          <div class="end-steps undraggable">
+            <button class="end-btn">结束</button>
+            <div class="stepsAdd stepsAdd-end" v-if="showEndSteps" @click="addBefore()">+</div>
+          </div>
+        </draggable>
       </div>
       <div class="stepInfo">
-          <p>步骤详情（请点击上方加号添加步骤）</p>
-          <div class="stepDetails">
-            <el-form ref="stepForm" label-width="100px" :model="stepForm" :rules="stepRules">
-              <el-form-item label="步骤名称:" prop="step_name">
-                <el-input v-model="stepForm.step_name" @change='stepnameChange' :disabled="templateAddDisable" placeholder='请输入步骤名称' />
-              </el-form-item>
-              <el-form-item label="步骤类型:" prop="step_type">
-                <el-select class='typeBox' v-model='stepForm.step_type' placeholder='请选择类型' style="width: 500px;" @change='steptypeChange' :disabled="templateAddDisable">
-                  <el-option v-for='i in typeItem' :key='i.id' :label='i.label' :value='i.value' />
-                </el-select>
-              </el-form-item>
-              <el-form-item label="步骤功能:" prop="step_func">
-                <el-select class='typeBox' v-model='stepForm.step_func' placeholder='请选择功能' style="width: 500px;" @change='featureChange' :disabled="templateAddDisable">
-                  <el-option v-for='i in featureItem' :key='i.id' :label='i.label' :value='i.value' />
-                </el-select>
-              </el-form-item>
-              <el-form-item label="URL地址:" prop="step_url">
-                <el-input v-model="stepForm.step_url" @change='urlChange' :disabled="templateAddDisable" placeholder='请输入Url地址' />
-              </el-form-item>
-              <el-form-item label="备注:" prop="step_msg">
-                <el-input type="textarea" v-model="stepForm.step_msg" :autosize="{ minRows: 3, maxRows: 4}" @change='remarksChange' :disabled="templateAddDisable" placeholder='请输入备注'  />
-              </el-form-item>
-            </el-form>
-            </div>
+        <p>步骤详情（请点击上方加号添加步骤）</p>
+        <div class="stepDetails">
+          <el-form ref="stepForm" label-width="100px" :model="stepForm" :rules="stepRules">
+            <el-form-item label="步骤名称:" prop="step_name">
+              <el-input v-model="stepForm.step_name" @change="stepnameChange" :disabled="templateAddDisable" placeholder="请输入步骤名称" />
+            </el-form-item>
+            <el-form-item label="步骤类型:" prop="step_type">
+              <el-select class="typeBox" v-model="stepForm.step_type" placeholder="请选择类型" style="width: 500px" @change="steptypeChange" :disabled="templateAddDisable">
+                <el-option v-for="i in typeItem" :key="i.id" :label="i.label" :value="i.value" />
+              </el-select>
+            </el-form-item>
+            <el-form-item label="步骤功能:" prop="step_func">
+              <el-select class="typeBox" v-model="stepForm.step_func" placeholder="请选择功能" style="width: 500px" @change="featureChange" :disabled="templateAddDisable">
+                <el-option v-for="i in featureItem" :key="i.id" :label="i.label" :value="i.value" />
+              </el-select>
+            </el-form-item>
+            <el-form-item label="URL地址:" prop="step_url">
+              <el-input v-model="stepForm.step_url" @change="urlChange" :disabled="templateAddDisable" placeholder="请输入Url地址" />
+            </el-form-item>
+            <el-form-item label="备注:" prop="step_msg">
+              <el-input type="textarea" v-model="stepForm.step_msg" :autosize="{ minRows: 3, maxRows: 4 }" @change="remarksChange" :disabled="templateAddDisable" placeholder="请输入备注" />
+            </el-form-item>
+          </el-form>
+        </div>
       </div>
-      <div class='confirmBox'>
-          <el-button size='medium' style='padding:8px 18px; font-size:14px;' @click="closeDialog">返回</el-button>
-          <el-button type='primary' size='medium' style='padding:8px 18px; margin-left:20px; font-size:14px;' @click="replace">重置</el-button>
-          <el-button type='success' size='medium' style='padding:8px 18px; margin-left:20px; font-size:14px;' @click="confirm">提交</el-button>
+      <div class="confirmBox">
+        <el-button size="medium" style="padding: 8px 18px; font-size: 14px" @click="closeDialog">返回</el-button>
+        <el-button type="primary" size="medium" style="padding: 8px 18px; margin-left: 20px; font-size: 14px" @click="replace">重置</el-button>
+        <el-button type="success" size="medium" style="padding: 8px 18px; margin-left: 20px; font-size: 14px" @click="confirm">提交</el-button>
       </div>
     </div>
   </div>
 </template>
 
-<script lang='ts'>
+<script lang="ts">
 import { Vue, Component, Ref } from 'vue-property-decorator';
 import draggable from 'vuedraggable';
 
 @Component({
-  components: { draggable }
+  components: { draggable },
 })
 export default class templateAdd extends Vue {
   @Ref() formRef!: any;
@@ -81,39 +81,39 @@ export default class templateAdd extends Vue {
 
   typeItem: any = [
     { id: '1', label: '接口触发', value: 'api' },
-    { id: '2', label: '人工流转', value: 'manual' }
-  ]
+    { id: '2', label: '人工流转', value: 'manual' },
+  ];
   featureItem: any = [
     { id: '1', label: 'Jenkins构建', value: 'build' },
     { id: '2', label: '应用部署', value: 'deploy' },
     { id: '3', label: '应用验证', value: 'validate' },
-    { id: '4', label: '镜像同步', value: 'sync' }
-  ]
+    { id: '4', label: '镜像同步', value: 'sync' },
+  ];
   stepForm: any = {
     new_or_edit: 'new',
     step_name: '',
     step_type: '',
     step_func: '',
     step_url: '',
-    step_msg: ''
-  }
+    step_msg: '',
+  };
   templateForm: any = {
     name: '',
-    msg: ''
-  }
+    msg: '',
+  };
   templateRules: any = {
     name: [{ required: true, message: '模板名称不能为空', trigger: 'blur' }],
-    msg: [{ required: true, message: '模板说明不能为空', trigger: 'blur' }]
-  }
+    msg: [{ required: true, message: '模板说明不能为空', trigger: 'blur' }],
+  };
   stepRules: any = {
     step_name: [{ required: true, message: '步骤名不能为空', trigger: 'blur' }],
     step_type: [{ required: true, message: '类型不能为空', trigger: 'blur' }],
-    step_func: [{ required: true, message: '功能不能为空', trigger: 'blur' }]
-  }
+    step_func: [{ required: true, message: '功能不能为空', trigger: 'blur' }],
+  };
   index: any = '';
   selectValue: any = '';
 
-  addBefore(i: any): void{
+  addBefore(i: any): void {
     this.templateAddDisable = false;
     this.stepForm.step_name = '';
     this.stepForm.step_type = '';
@@ -127,29 +127,40 @@ export default class templateAdd extends Vue {
       step_type: '',
       step_func: '',
       step_url: '',
-      step_msg: ''
+      step_msg: '',
     });
     if (this.list.length !== 0) {
       this.showEndSteps = false;
-    };
+    }
     this.selectValue = '';
     let stepsArrey = document.getElementsByTagName('textarea');
-    if(i) { window.setTimeout(() => { stepsArrey[i+1].focus()}, 0)}
-    else { window.setTimeout(() => { stepsArrey[1].focus()}, 0)};
+    if (i) {
+      window.setTimeout(() => {
+        stepsArrey[i + 1].focus();
+      }, 0);
+    } else {
+      window.setTimeout(() => {
+        stepsArrey[1].focus();
+      }, 0);
+    }
   }
-  addAfter(i: any): void{
+  addAfter(i: any): void {
     this.stepForm.step_name = '';
     this.stepForm.step_type = '';
     this.stepForm.step_func = '';
     this.stepForm.step_url = '';
     this.stepForm.step_msg = '';
     let stepsArrey = document.getElementsByTagName('textarea');
-    if(i == 0) {
-      window.setTimeout(() => { stepsArrey[2].focus(); }, 0);
-    } else if(i > 0) {
+    if (i == 0) {
+      window.setTimeout(() => {
+        stepsArrey[2].focus();
+      }, 0);
+    } else if (i > 0) {
       i = i + 1;
-      window.setTimeout(() => { stepsArrey[i+1].focus(); }, 0);
-    };
+      window.setTimeout(() => {
+        stepsArrey[i + 1].focus();
+      }, 0);
+    }
     this.list.splice(i, 0, {
       id: this.id++,
       new_or_edit: 'new',
@@ -157,7 +168,7 @@ export default class templateAdd extends Vue {
       step_type: '',
       step_func: '',
       step_url: '',
-      step_msg: ''
+      step_msg: '',
     });
   }
   deleteStep(i: any): void {
@@ -166,12 +177,12 @@ export default class templateAdd extends Vue {
       this.showEndSteps = true;
       this.templateAddDisable = true;
       this.stepForm = { new_or_edit: 'new', step_name: '', step_type: '', step_func: '', step_url: '', step_msg: '' };
-    };
+    }
     let stepsArrey = document.querySelectorAll('textarea');
-    for(let i = 1; i < stepsArrey.length-1; i++) {
+    for (let i = 1; i < stepsArrey.length - 1; i++) {
       stepsArrey[i].style.backgroundColor = '#ecf5ff';
       stepsArrey[i].style.color = '#409eff';
-    };
+    }
   }
   iptFocus(v: any, i: any): void {
     this.stepForm.step_name = v.step_name;
@@ -181,10 +192,10 @@ export default class templateAdd extends Vue {
     this.stepForm.step_msg = v.step_msg;
     let stepsArrey = document.querySelectorAll('textarea');
     this.index = i + 1;
-    for(let i=1; i<stepsArrey.length-1; i++) {
+    for (let i = 1; i < stepsArrey.length - 1; i++) {
       stepsArrey[i].style.backgroundColor = '#ecf5ff';
       stepsArrey[i].style.color = '#409eff';
-    };
+    }
     stepsArrey[this.index].style.backgroundColor = '#409eff';
     stepsArrey[this.index].style.color = '#fff';
   }
@@ -209,43 +220,43 @@ export default class templateAdd extends Vue {
     this.list[this.index].step_msg = selVal;
   }
   closeDialog(): void {
-    this.$router.push('/conf/template')
+    this.$router.push('/conf/template');
   }
 
   confirm() {
-    if(this.templateForm.name == '') return this.$message.error('模板名称不能为空');
-    if(this.templateForm.msg == '') return this.$message.error('模板说明不能为空');
-    if(this.stepForm.step_name == '') return this.$message.error('步骤名不能为空');
-    if(this.stepForm.step_type == '') return this.$message.error('步骤类型不能为空');
-    if(this.stepForm.step_func == '') return this.$message.error('步骤功能不能为空');
+    if (this.templateForm.name == '') return this.$message.error('模板名称不能为空');
+    if (this.templateForm.msg == '') return this.$message.error('模板说明不能为空');
+    if (this.stepForm.step_name == '') return this.$message.error('步骤名不能为空');
+    if (this.stepForm.step_type == '') return this.$message.error('步骤类型不能为空');
+    if (this.stepForm.step_func == '') return this.$message.error('步骤功能不能为空');
     let stepsMessage = [];
     let stepsArrey = document.querySelectorAll('textarea');
-    for(let i = 1; i < stepsArrey.length-1; i++) {
+    for (let i = 1; i < stepsArrey.length - 1; i++) {
       stepsArrey[i].style.backgroundColor = '#ecf5ff';
       stepsArrey[i].style.color = '#409eff';
-    };
-    for (let i = 1; i < stepsArrey.length-1; i++) {
-      if(stepsArrey[i].value != '') {
+    }
+    for (let i = 1; i < stepsArrey.length - 1; i++) {
+      if (stepsArrey[i].value != '') {
         stepsMessage.push(stepsArrey[i].value);
       } else {
-        for (let i = 1; i < stepsArrey.length-1; i++) {
-          if(stepsArrey[i].value === '') {
+        for (let i = 1; i < stepsArrey.length - 1; i++) {
+          if (stepsArrey[i].value === '') {
             stepsArrey[i].style.backgroundColor = '#EE1111';
             stepsArrey[i].style.color = '#fff';
-          };
+          }
         }
-        return this.$message({type: 'error', message: '请填写完整的流程'});
+        return this.$message({ type: 'error', message: '请填写完整的流程' });
       }
-    };
+    }
     let params = {
       id: 0,
       name: this.templateForm.name,
       msg: this.templateForm.msg,
-      steps: this.list
+      steps: this.list,
     };
-    console.log(params)
+    console.log(params);
   }
-  replace(): void{
+  replace(): void {
     this.list = [];
     this.templateForm = { name: '', msg: '' };
     this.stepForm = { new_or_edit: 'new', step_name: '', step_type: '', step_func: '', step_url: '', step_msg: '' };
@@ -272,17 +283,18 @@ export default class templateAdd extends Vue {
   }
 }
 /deep/ .el-form-item--small.el-form-item {
-    margin-bottom: 12px;
+  margin-bottom: 12px;
 }
-/deep/ .el-input--small .el-input__inner, .el-input--small .el-textarea__inner {
-    font-size: 12px;
+/deep/ .el-input--small .el-input__inner,
+.el-input--small .el-textarea__inner {
+  font-size: 12px;
 }
 /deep/ .el-input--small .el-textarea__inner {
-    font-size: 12px;
+  font-size: 12px;
 }
 /deep/ .el-input--small .el-input__inner {
-    height: 28px;
-    line-height: 28px;
+  height: 28px;
+  line-height: 28px;
 }
 /deep/ textarea {
   font: 400 13.3333px Arial;
@@ -292,7 +304,7 @@ export default class templateAdd extends Vue {
   outline: 0;
   caret-color: transparent;
 }
- .step_box textarea::-webkit-input-placeholder {
+.step_box textarea::-webkit-input-placeholder {
   color: #ccc;
 }
 .templateInfo {
@@ -318,8 +330,8 @@ export default class templateAdd extends Vue {
   text-align: center;
 }
 button {
-    outline: 0;
-  }
+  outline: 0;
+}
 .step_box {
   min-height: 72px;
   width: 810px;
@@ -403,8 +415,8 @@ button {
   z-index: 2;
 }
 .end-steps:hover {
-.stepsAdd-after {
-  display: block;
+  .stepsAdd-after {
+    display: block;
   }
 }
 .step:hover {
