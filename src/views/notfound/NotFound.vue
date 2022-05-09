@@ -5,10 +5,8 @@
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
 
-@Component({ })
-export default class NotFound extends Vue {
-
-}
+@Component({})
+export default class NotFound extends Vue {}
 </script>
 
 <style lang="less" scoped>
@@ -18,6 +16,6 @@ export default class NotFound extends Vue {
   position: absolute;
   left: 0;
   top: 0;
-  background: url("../../assets/images/404.png") no-repeat center / cover;
+  background: url('../../assets/images/404.png') no-repeat center / cover;
 }
 </style>

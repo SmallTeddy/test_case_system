@@ -1,23 +1,29 @@
 <template>
   <div class="card-row">
     <el-card v-for="v in list" :key="v.id">
-        <div class="card-item">
-          <i :class="[v.icon, v.bgcolor]" class="item-img"></i>
-          <div class="card-text">
-            <h4>{{ v.title }}</h4>
-            <p>{{ v.data }}</p>
-          </div>
+      <div class="card-item">
+        <i :class="[v.icon, v.bgcolor]" class="item-img"></i>
+        <div class="card-text">
+          <h4>{{ v.title }}</h4>
+          <p>{{ v.data }}</p>
         </div>
-      </el-card>
+      </div>
+    </el-card>
   </div>
 </template>
 
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
 
-@Component({ })
+@Component({})
 export default class CardItem extends Vue {
-  @Prop({ type: Array, default: () => {[]} }) list!: Array<Record<string, unknown>>;
+  @Prop({
+    type: Array,
+    default: () => {
+      [];
+    },
+  })
+  list!: Array<Record<string, unknown>>;
 }
 </script>
 
@@ -69,7 +75,8 @@ export default class CardItem extends Vue {
     height: 80px;
     width: 140px;
 
-    h4, p {
+    h4,
+    p {
       text-align: center;
       margin: 10px 0 0 0;
     }

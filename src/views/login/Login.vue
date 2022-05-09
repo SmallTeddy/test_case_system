@@ -1,27 +1,20 @@
 <template>
   <div class="login">
     <el-card class="card">
-      <div class="title">
-        Test Case System
-      </div>
+      <div class="title">Test Case System</div>
       <el-form :model="loginForm" status-icon :rules="loginRules" ref="loginForm">
         <el-form-item class="el-form-item" prop="mobile">
           <el-input v-model="loginForm.mobile" placeholder="请输入手机号" class="el-input"></el-input>
         </el-form-item>
         <el-form-item class="el-form-item" prop="code">
-          <el-input
-            v-model="loginForm.code"
-            placeholder="请输入验证码"
-            class="el-input"
-            style="width:230px;margin-right:15px;"
-          ></el-input>
-          <el-button style="background:black;color:white" @click="getCode">获取验证码</el-button>
+          <el-input v-model="loginForm.code" placeholder="请输入验证码" class="el-input" style="width: 230px; margin-right: 15px"></el-input>
+          <el-button style="background: black; color: white" @click="getCode">获取验证码</el-button>
         </el-form-item>
         <el-form-item class="el-form-item">
-          <el-checkbox v-model="agreement" style="color:black">我已阅读并同意用户协议和隐私条款</el-checkbox>
+          <el-checkbox v-model="agreement" style="color: black">我已阅读并同意用户协议和隐私条款</el-checkbox>
         </el-form-item>
         <el-form-item class="el-form-item">
-          <el-button type="primary" style="width:100%;background-color:black;color:white" @click="login">登录</el-button>
+          <el-button type="primary" style="width: 100%; background-color: black; color: white" @click="login">登录</el-button>
         </el-form-item>
       </el-form>
     </el-card>
@@ -31,16 +24,16 @@
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
 
-@Component({ })
+@Component({})
 export default class Login extends Vue {
   loginForm = {
-    mobile: "13312345678",
-    code: ""
+    mobile: '13312345678',
+    code: '',
   };
   agreement = false;
   loginRules = {
-    mobile: [{ required: true, message: "请输入手机号", trigger: "blur" }],
-    code: [{ required: true, message: "请输入验证码", trigger: "blur" }]
+    mobile: [{ required: true, message: '请输入手机号', trigger: 'blur' }],
+    code: [{ required: true, message: '请输入验证码', trigger: 'blur' }],
   };
 
   getCode(): void {
@@ -48,8 +41,8 @@ export default class Login extends Vue {
   }
 
   login(): void {
-    if(this.agreement) {
-      if(this.loginForm.mobile == '13312345678' && this.loginForm.code == '123456') {
+    if (this.agreement) {
+      if (this.loginForm.mobile == '13312345678' && this.loginForm.code == '123456') {
         this.$router.push('/');
       } else {
         this.getCode();
@@ -68,7 +61,7 @@ export default class Login extends Vue {
   top: 0;
   height: 100%;
   width: 100%;
-  background: url("../../assets/images/login-bg.jpg") no-repeat center / cover;
+  background: url('../../assets/images/login-bg.jpg') no-repeat center / cover;
   .card {
     width: 400px;
     height: 320px;

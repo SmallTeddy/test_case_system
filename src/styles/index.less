@@ -1,5 +1,5 @@
-@import "./variables.less";
-@import "./reset.less";
+@import './variables.less';
+@import './reset.less';
 
 html {
   box-sizing: border-box;
@@ -9,7 +9,7 @@ body {
   height: 100%;
   font-size: 12px;
   color: #303030;
-  font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+  font-family: 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', '微软雅黑', Arial, sans-serif;
   -webkit-font-smoothing: antialiased; // 字体抗锯齿，使字体更加平滑
   -moz-osx-font-smoothing: grayscale; // 字体抗锯齿，兼容火狐
   text-rendering: optimizeLegibility; // 绘制文本时，浏览器侧重文本的可读性
@@ -26,7 +26,7 @@ body {
     visibility: hidden;
     display: block;
     font-size: 0;
-    content: " ";
+    content: ' ';
     clear: both;
     height: 0;
   }
@@ -62,7 +62,8 @@ body {
     .el-form-item__label {
       font-weight: 500;
     }
-    .el-select,.el-date-editor {
+    .el-select,
+    .el-date-editor {
       width: 100%;
     }
   }
@@ -79,7 +80,7 @@ body {
     box-sizing: border-box;
     // height: 100%;
     // padding: 60px 0;
-    border-left: 1px solid #dcdfe6; 
+    border-left: 1px solid #dcdfe6;
     min-width: 0;
     width: 150px;
   }
@@ -102,15 +103,17 @@ body {
   &.el-button--primary {
     background-color: @baseBlue;
     border-color: @baseBlue;
-    &:focus,&:hover {
+    &:focus,
+    &:hover {
       background-color: #59a7d4;
       border-color: #59a7d4;
     }
   }
   &.el-button--success {
     background-color: @baseGreen;
-    border-color: @baseGreen; 
-    &:focus,&:hover {
+    border-color: @baseGreen;
+    &:focus,
+    &:hover {
       background-color: #2ab46f;
       border-color: #2ab46f;
     }
@@ -118,7 +121,8 @@ body {
   &.el-button--danger {
     background-color: @baseRed;
     border-color: @baseRed;
-    &:focus,&:hover {
+    &:focus,
+    &:hover {
       background-color: #ef5959;
       border-color: #ef5959;
     }
@@ -127,7 +131,8 @@ body {
     background-color: #ececec;
     border-color: #e4e7ed;
     color: #6d6f74;
-    &:focus,&:hover {
+    &:focus,
+    &:hover {
       background-color: #ecf5ff;
       border-color: #c6e2ff;
       color: #409eff;
@@ -135,11 +140,13 @@ body {
   }
 }
 // element-ui small尺寸 组件字体设置
-.el-button--small, .el-tag--small  {
+.el-button--small,
+.el-tag--small {
   font-size: 14px;
 }
 .el-input--small {
-  .el-input__inner, .el-textarea__inner {
+  .el-input__inner,
+  .el-textarea__inner {
     font-size: 14px;
   }
 }

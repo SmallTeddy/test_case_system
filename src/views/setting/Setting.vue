@@ -30,7 +30,7 @@
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
 
-@Component({ })
+@Component({})
 export default class Setting extends Vue {
   isChange = false;
   user = {
@@ -38,8 +38,8 @@ export default class Setting extends Vue {
     phone: '13312345678',
     address: '苏州市',
     des: '学生',
-    other: '江苏省苏州市吴中区吴中大道 1188 号'
-  }
+    other: '江苏省苏州市吴中区吴中大道 1188 号',
+  };
   changeUserInfo(): void {
     this.isChange = true;
   }

@@ -734,15 +734,15 @@ export default class CodePage extends Vue {
     lineNumbers: true,
     line: true,
     mode: 'text/x-mysql',
-    theme: 'dracula dark'
+    theme: 'dracula dark',
   };
   sqlCodeFocus(code: string): void {
-    if(code == '请输入代码') {
+    if (code == '请输入代码') {
       this.code = '';
     }
   }
   sqlCodeBlur(code: string): void {
-    if(String(code).trim() == '') {
+    if (String(code).trim() == '') {
       this.code = '请输入代码';
     }
   }

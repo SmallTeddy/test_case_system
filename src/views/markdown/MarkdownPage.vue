@@ -1,6 +1,6 @@
 <template>
   <div class="vs-markdown">
-    <VueMarkdown style="margin-top: -16px;" :source="htmlMD"></VueMarkdown>
+    <VueMarkdown style="margin-top: -16px" :source="htmlMD"></VueMarkdown>
   </div>
 </template>
 
@@ -11,16 +11,16 @@ const docMD = require('../../../README.md');
 import { useCounterStore } from '@/pinia/index';
 
 @Component({
-  components: { VueMarkdown }
+  components: { VueMarkdown },
 })
 export default class Doc extends Vue {
   htmlMD: any = docMD;
   counter = useCounterStore();
 
   mounted() {
-    console.log(this.counter)
-    console.log(this.counter.count)
-    this.counter.$patch({ count: this.counter.count + 1 })
+    console.log(this.counter);
+    console.log(this.counter.count);
+    this.counter.$patch({ count: this.counter.count + 1 });
   }
 }
 </script>

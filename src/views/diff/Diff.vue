@@ -6,7 +6,7 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
-import CodeDiff from 'vue-code-diff'
+import CodeDiff from 'vue-code-diff';
 
 @Component({ components: { CodeDiff } })
 export default class Diff extends Vue {
@@ -265,7 +265,8 @@ export default class StatusVs extends Vue {
 </script>
 
 <style lang="less" scoped>
-::v-deep .d2h-wrapper .d2h-code-side-line, .d2h-wrapper .d2h-code-line {
+::v-deep .d2h-wrapper .d2h-code-side-line,
+.d2h-wrapper .d2h-code-line {
   display: inline-block;
 }
 </style>

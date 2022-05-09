@@ -1,9 +1,7 @@
 <template>
   <el-container class="container">
     <el-aside class="aside" width="180px">
-      <el-menu router :collapse-transition="false" :default-active="$route.path"
-        background-color="#fff" text-color="#666" active-text-color="#409EFF"
-        style=" border-right: none; font-weight: 700">
+      <el-menu router :collapse-transition="false" :default-active="$route.path" background-color="#fff" text-color="#666" active-text-color="#409EFF" style="border-right: none; font-weight: 700">
         <el-menu-item v-for="menu in menuItems" :key="menu.index" :index="menu.index">
           <i :class="menu.icon"></i>
           <span slot="title">{{ menu.title }}</span>
@@ -33,35 +31,39 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component } from "vue-property-decorator";
+import { Vue, Component } from 'vue-property-decorator';
 
 @Component({})
 export default class Layout extends Vue {
-  userName = "测试用户";
+  userName = '测试用户';
   userPhoto = require('../../assets/images/user_photo.png');
   menuItems = [
-    { index: '/',         icon: 'el-icon-s-home',              title: '首页'    },
-    { index: '/evaluate', icon: 'el-icon-document',            title: '评价管理' },
-    { index: '/form',     icon: 'el-icon-s-claim',             title: '表单测试' },
-    { index: '/editor',   icon: 'el-icon-edit',                title: '富文本框' },
-    { index: '/code',     icon: 'el-icon-coin',                title: '代码界面' },
-    { index: '/graph',    icon: 'el-icon-s-data',              title: '关系图表' },
-    { index: '/diff',     icon: 'el-icon-c-scale-to-original', title: 'diff案例' },
-    { index: '/drag',     icon: 'el-icon-money',               title: '拖拽案例' },
-    { index: '/setting',  icon: 'el-icon-setting',             title: '个人设置' },
-    { index: '/markdown', icon: 'el-icon-notebook-2',          title: 'MD文档'   }
-  ]
+    { index: '/', icon: 'el-icon-s-home', title: '首页' },
+    { index: '/evaluate', icon: 'el-icon-document', title: '评价管理' },
+    { index: '/form', icon: 'el-icon-s-claim', title: '表单测试' },
+    { index: '/editor', icon: 'el-icon-edit', title: '富文本框' },
+    { index: '/code', icon: 'el-icon-coin', title: '代码界面' },
+    { index: '/graph', icon: 'el-icon-s-data', title: '关系图表' },
+    { index: '/diff', icon: 'el-icon-c-scale-to-original', title: 'diff案例' },
+    { index: '/drag', icon: 'el-icon-money', title: '拖拽案例' },
+    { index: '/setting', icon: 'el-icon-setting', title: '个人设置' },
+    { index: '/markdown', icon: 'el-icon-notebook-2', title: 'MD文档' },
+  ];
   logout() {
-    this.$router.push("/login");
+    this.$router.push('/login');
   }
   setting() {
-    this.$router.push("/setting");
+    this.$router.push('/setting');
   }
 
   dropdownClick(command: string): void {
-    switch(command) {
-      case 'setting': this.setting(); break;
-      case 'logout': this.logout(); break;
+    switch (command) {
+      case 'setting':
+        this.setting();
+        break;
+      case 'logout':
+        this.logout();
+        break;
     }
   }
 }

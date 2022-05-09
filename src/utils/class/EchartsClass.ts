@@ -5,7 +5,7 @@ class EchartClass {
   option: echarts.EChartsCoreOption = {};
 
   constructor(data: Partial<EchartClass> = {}) {
-      Object.assign(this, data);
+    Object.assign(this, data);
   }
 }
 

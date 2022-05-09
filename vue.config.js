@@ -12,28 +12,23 @@ module.exports = {
     // 是否使用css分离插件 ExtractTextPlugin
     extract: true,
     // 开启 CSS source maps
-    sourceMap: false
+    sourceMap: false,
   },
   // webpack-dev-server 相关配置
   devServer: {
     port: '3333',
-    open: true //自动打开浏览器
+    open: true, //自动打开浏览器
   },
-  chainWebpack: config => {
+  chainWebpack: (config) => {
     // 压缩图片
-    config.module
-      .rule('images')
-      .use('image-webpack-loader')
-      .loader('image-webpack-loader')
-      .options({ bypassOnDebug: true })
-      .end();
+    config.module.rule('images').use('image-webpack-loader').loader('image-webpack-loader').options({ bypassOnDebug: true }).end();
   },
   configureWebpack: {
     module: {
       rules: [
-        { test: /\.mjs$/, include: /node_modules/, type: "javascript/auto" },
-        { test: /\.md$/, use: [{ loader: 'html-loader' }, { loader: 'markdown-loader' }] }
-      ]
-    }
-  }
+        { test: /\.mjs$/, include: /node_modules/, type: 'javascript/auto' },
+        { test: /\.md$/, use: [{ loader: 'html-loader' }, { loader: 'markdown-loader' }] },
+      ],
+    },
+  },
 };
