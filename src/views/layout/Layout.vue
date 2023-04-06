@@ -1,6 +1,6 @@
 <template>
   <el-container class="container">
-    <el-aside class="aside" width="180px">
+    <el-aside class="aside" width="90px">
       <el-menu router :collapse-transition="false" :default-active="$route.path" background-color="#fff" text-color="#666" active-text-color="#409EFF" style="border-right: none; font-weight: 700">
         <el-menu-item v-for="menu in menuItems" :key="menu.index" :index="menu.index">
           <i :class="menu.icon"></i>
@@ -81,6 +81,7 @@ export default class Layout extends Vue {
   height: 100%;
   width: 100%;
   .aside {
+    // width: 12vw;
     background-color: #fff;
   }
   .header {

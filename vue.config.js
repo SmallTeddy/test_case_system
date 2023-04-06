@@ -22,6 +22,20 @@ module.exports = {
   chainWebpack: (config) => {
     // 压缩图片
     config.module.rule('images').use('image-webpack-loader').loader('image-webpack-loader').options({ bypassOnDebug: true }).end();
+    config.module
+      .rule('vue')
+      .test(/\.vue$/)
+      .use('postcss-style-px-to-viewport')
+      .loader('postcss-style-px-to-viewport')
+      .options({
+        unitToConvert: 'px',
+        ignoreUnitCase: true, // 默认会忽略大小写来转换unitToConvert的匹配值 如px、PX、Px、pX各个情况。如果设置为false 则只匹配 px
+        viewportWidth: 750,
+        unitPrecision: 5,
+        viewportUnit: 'vw',
+        fontViewportUnit: 'vw',
+        minPixelValue: 1
+      })
   },
   configureWebpack: {
     module: {
